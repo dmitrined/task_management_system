@@ -4,14 +4,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TaskManager {
-    static List<Task> tasks;
+    private List<Task> tasks;
 
     public TaskManager() {
         this.tasks = new ArrayList<>();
     }
 
     //добавляет задачу в список.
-    public  void addTask(Task task) {
+    public void addTask(Task task) {
         tasks.add(task);
     }
 
@@ -24,14 +24,12 @@ public class TaskManager {
 
     //возвращает задачу по индексу.
     public Task getTask(int index) {
-        //проверяем, находится ли заданный index в tasks
         if (index >= 0 && index < tasks.size()) {
             return tasks.get(index);
-            // иначе возвращаем null
-        } else {
-            return null;
         }
+        return null;
     }
+
 
     //  возвращает список всех задач.(копию)
     public List<Task> getAllTasks() {
@@ -70,13 +68,11 @@ public class TaskManager {
         }
         return new ArrayList<>(result);
     }
-//сортирует список задач с использованием заданного компаратора(ByPriority).
+
+    //сортирует список задач с использованием заданного компаратора(ByPriority).
     public List<Task> sortTasks(Comparator<Task> comparator) {
         List<Task> result = new ArrayList<>(tasks);
-        Collections.sort(result,comparator);
+        Collections.sort(result, comparator);
         return result;
     }
-
-
 }
-
